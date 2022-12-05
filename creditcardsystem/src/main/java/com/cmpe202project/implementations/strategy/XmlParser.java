@@ -5,6 +5,7 @@ import com.cmpe202project.models.CreditCard;
 import com.cmpe202project.implementations.util.Utilities;
 import com.cmpe202project.interfaces.FileHandlingStrategy;
 import com.cmpe202project.models.InputFileObject;
+import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -45,22 +46,23 @@ public class XmlParser implements FileHandlingStrategy {
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
             // System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-            NodeList nodeList = doc.getElementsByTagName("row");
+            NodeList nodeList = doc.getElementsByTagName("CARD");
             list = new ArrayList<>();
             System.out.println("XmlParser Read xml input file : " +filePath);
             for (int i = 0; i < nodeList.getLength(); i++) {
+
                 Node node = nodeList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE){
                     Element eElement = (Element) node;
 
-                    if(null != eElement.getElementsByTagName("CardNumber").item(0))
-                        cardNumber = eElement.getElementsByTagName("CardNumber").item(0).getTextContent();
+                    if(null != eElement.getElementsByTagName("CARD_NUMBER").item(0))
+                        cardNumber = eElement.getElementsByTagName("CARD_NUMBER").item(0).getTextContent();
 
-                    if(null != eElement.getElementsByTagName("ExpirationDate").item(0))
-                        expirationDate = Utilities.StringToDate(eElement.getElementsByTagName("ExpirationDate").item(0).getTextContent());
+                    if(null != eElement.getElementsByTagName("EXPIRATION_DATE").item(0))
+                        expirationDate = Utilities.StringToDate(eElement.getElementsByTagName("EXPIRATION_DATE").item(0).getTextContent());
 
-                    if(null != eElement.getElementsByTagName("NameOfCardholder").item(0))
-                        nameOfCardholder = eElement.getElementsByTagName("NameOfCardholder").item(0).getTextContent();
+                    if(null != eElement.getElementsByTagName("CARD_HOLDER_NAME").item(0))
+                        nameOfCardholder = eElement.getElementsByTagName("CARD_HOLDER_NAME").item(0).getTextContent();
 
                     inputfileobject = new InputFileObject(cardNumber.trim(),expirationDate,nameOfCardholder.trim());
                     list.add(inputfileobject);
@@ -83,33 +85,39 @@ public class XmlParser implements FileHandlingStrategy {
             Document doc = dBuilder.newDocument();
 
             // root element
-            Element rootElement = doc.createElement("root");
+            Element rootElement = doc.createElement("CARDS");
             doc.appendChild(rootElement);
             System.out.println("XmlParser Write xml output file : "+filePath);
             for (CreditCard i : cardList) {
 
-                if (i.getCardType() != CreditCardType.Invalid) {
-                    error = "None";
-                } else
-                    error = "InvalidCardNumber";
+                if (i.getCardType() != CreditCardType.Invalid)
+                    error = "";
+                else if(!StringUtils.isNotEmpty(i.getCardNumber()))
+                    error = ": empty/null card number";
+                else if(i.getCardNumber().length()>19)
+                    error = ": more than 19 digits";
+                else if(!StringUtils.isNumericSpace(i.getCardNumber()))
+                    error = ": non numeric characters";
+                else
+                    error = ": not a possible card number";
 
-                Element row = doc.createElement("row");
+                Element row = doc.createElement("CARD");
                 rootElement.appendChild(row);
 
                 //CardNumber Element
-                Element cardNumber = doc.createElement("CardNumber");
+                Element cardNumber = doc.createElement("CARD_NUMBER");
                 cardNumber.appendChild(doc.createTextNode(i.getCardNumber()));
                 row.appendChild(cardNumber);
 
                 //CardType Element
-                Element cardType = doc.createElement("CardType");
-                cardType.appendChild(doc.createTextNode(i.getCardType().toString()));
+                Element cardType = doc.createElement("CARD_TYPE");
+                cardType.appendChild(doc.createTextNode(i.getCardType().toString()+error));
                 row.appendChild(cardType);
 
                 //Error Element
-                Element errortag = doc.createElement("Error");
-                errortag.appendChild(doc.createTextNode(error));
-                row.appendChild(errortag);
+//                Element errortag = doc.createElement("Error");
+//                errortag.appendChild(doc.createTextNode(error));
+//                row.appendChild(errortag);
 
             }
             // write the content into xml file

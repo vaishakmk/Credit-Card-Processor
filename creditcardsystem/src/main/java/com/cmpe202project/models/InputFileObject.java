@@ -16,6 +16,10 @@ public class InputFileObject {
     Date expirationDate;
     String nameOfCardholder;
 
+    public InputFileObject(){
+        cardNumber = null;
+    }
+
     @Override
     public String toString() {
         return "InputFileObject{" +
