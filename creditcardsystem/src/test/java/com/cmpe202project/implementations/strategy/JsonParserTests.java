@@ -23,14 +23,14 @@ public class JsonParserTests {
 
 	private FileContext fileContext = new FileContext();
 
-//	@Test
-//	public void doReadFileJSONTestCase() throws Exception {
-//		Path path = Paths.get("src/test/resources/SampleInput.json");
-//		System.out.println("AbsolutePath of File "+ path.toAbsolutePath().toString());
-//		List<InputFileObject>
-//				jsonFileObjects = fileContext.doReadFile(path.toAbsolutePath().toString());
-//		Assert.assertEquals(jsonFileObjects, getActualList());
-//	}
+	@Test
+	public void doReadFileJSONTestCase() throws Exception {
+		Path path = Paths.get("src/test/resources/input_file.json");
+		System.out.println("AbsolutePath of File "+ path.toAbsolutePath().toString());
+		List<InputFileObject>
+				jsonFileObjects = fileContext.doReadFile(path.toAbsolutePath().toString());
+		Assert.assertEquals(jsonFileObjects, getActualList());
+	}
 
 	@Test
 	public void writeFileTestCase() {
@@ -54,24 +54,9 @@ public class JsonParserTests {
 	private List<InputFileObject> getActualList() throws Exception {
 		List<InputFileObject> actualList = new ArrayList<>();
 
-		InputFileObject inputFileObject = new InputFileObject("5410000000000000",
-				Utilities.StringToDate("3/20/2030"),
-				"Alice");
-		actualList.add(inputFileObject);
-
-		inputFileObject = new InputFileObject("4120000000000",
-				Utilities.StringToDate("4/20/2030"),
-				"Bob");
-		actualList.add(inputFileObject);
-
-		inputFileObject = new InputFileObject("341000000000000",
-				Utilities.StringToDate("5/20/2030"),
-				"Eve");
-		actualList.add(inputFileObject);
-
-		inputFileObject = new InputFileObject("6010000000000000",
-				Utilities.StringToDate("6/20/2030"),
-				"Richard");
+		InputFileObject inputFileObject = new InputFileObject("5567894523129089",
+				Utilities.StringToDate("08/26"),
+				"John Doe");
 		actualList.add(inputFileObject);
 
 		return actualList;

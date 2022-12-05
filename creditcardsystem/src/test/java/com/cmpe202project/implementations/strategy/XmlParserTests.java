@@ -24,14 +24,14 @@ public class XmlParserTests {
 
 	private FileContext fileContext = new FileContext();
 
-//	@Test
-//	public void doReadFileXMLTestCase() throws Exception {
-//		Path path = Paths.get("src/test/resources/SampleInput.xml");
-//		System.out.println("AbsolutePath of File "+ path.toAbsolutePath().toString());
-//		List<InputFileObject>
-//				xmlFileObjects = fileContext.doReadFile(path.toAbsolutePath().toString());
-//		Assert.assertEquals(xmlFileObjects, getActualList());
-//	}
+	@Test
+	public void doReadFileXMLTestCase() throws Exception {
+		Path path = Paths.get("src/test/resources/input_file.xml");
+		System.out.println("AbsolutePath of File "+ path.toAbsolutePath().toString());
+		List<InputFileObject>
+				xmlFileObjects = fileContext.doReadFile(path.toAbsolutePath().toString());
+		Assert.assertEquals(xmlFileObjects, getActualList());
+	}
 
 	@Test
 	public void writeFileTestCase() {
@@ -55,25 +55,25 @@ public class XmlParserTests {
 	private List<InputFileObject> getActualList() throws Exception {
 		List<InputFileObject> actualList = new ArrayList<>();
 
-		InputFileObject inputFileObject = new InputFileObject("5410000000000000",
-				Utilities.StringToDate("3/20/2030"),
-				"Alice");
+		InputFileObject inputFileObject = new InputFileObject("5567894523129089",
+				Utilities.StringToDate("08/26"),
+				"John DoE");
 		actualList.add(inputFileObject);
-
-		inputFileObject = new InputFileObject("4120000000000",
-				Utilities.StringToDate("4/20/2030"),
-				"Bob");
-		actualList.add(inputFileObject);
-
-		inputFileObject = new InputFileObject("341000000000000",
-				Utilities.StringToDate("5/20/2030"),
-				"Eve");
-		actualList.add(inputFileObject);
-
-		inputFileObject = new InputFileObject("6010000000000000",
-				Utilities.StringToDate("6/20/2030"),
-				"Richard");
-		actualList.add(inputFileObject);
+//
+//		inputFileObject = new InputFileObject("4120000000000",
+//				Utilities.StringToDate("4/20/2030"),
+//				"Bob");
+//		actualList.add(inputFileObject);
+//
+//		inputFileObject = new InputFileObject("341000000000000",
+//				Utilities.StringToDate("5/20/2030"),
+//				"Eve");
+//		actualList.add(inputFileObject);
+//
+//		inputFileObject = new InputFileObject("6010000000000000",
+//				Utilities.StringToDate("6/20/2030"),
+//				"Richard");
+//		actualList.add(inputFileObject);
 
 		return actualList;
 	}
