@@ -1,4 +1,4 @@
-package com.cmpe202project.implementations.strategy;
+package java.com.cmpe202project.implementations.strategy;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.cmpe202project.implementations.util.Utilities;
 import com.cmpe202project.models.*;
+import com.cmpe202project.implementations.strategy.*;
+
 
 import org.junit.Assert;
 import org.junit.Test;

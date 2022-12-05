@@ -1,4 +1,4 @@
-package com.cmpe202project.implementations.chainofresponsibility;
+package java.com.cmpe202project.implementations.chainofresponsibility;
 
 import java.util.ArrayList;
 
