@@ -73,7 +73,7 @@ public class CsvParser implements FileHandlingStrategy {
 
         //Delimiter used in CSV file
         String NEW_LINE_SEPARATOR = "\n";
-        String header = "CardNumber,CardType,Error";
+        String header = "cardNumber,cardType";
         List<OutputFileObject> list;
         String error = "";
 
