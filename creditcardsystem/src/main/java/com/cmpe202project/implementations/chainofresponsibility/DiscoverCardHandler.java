@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 public class DiscoverCardHandler implements CreditCardHandler {
 
     private CreditCardHandler successor = null;
-    private CreditCardType cardType;
+    private CreditCardType cardType = null;
 
     @Override
     public CreditCardType description() {

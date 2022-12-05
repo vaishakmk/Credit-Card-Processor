@@ -1,0 +1,24 @@
+{
+  "cards": [
+    {
+      "CardNumber": "5400000000000000",
+      "CardType": "MasterCard"
+    },
+    {
+      "CardNumber": "4120000000000",
+      "CardType": "Visa"
+    },
+    {
+      "CardNumber": "6011000000000000",
+      "CardType": "Discover"
+    },
+    {
+      "CardNumber": "341000000000000",
+      "CardType": "AmericanExpress"
+    },
+    {
+      "CardNumber": "00000",
+      "CardType": "Invalid: not a possible card number"
+    }
+  ]
+}

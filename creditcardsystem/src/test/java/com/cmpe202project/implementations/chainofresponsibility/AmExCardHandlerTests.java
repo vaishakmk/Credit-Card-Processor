@@ -1,9 +1,8 @@
-package java.com.cmpe202project.implementations.chainofresponsibility;
+package com.cmpe202project.implementations.chainofresponsibility;
 
 import java.util.ArrayList;
 
 import com.cmpe202project.models.CreditCardType;
-import com.cmpe202project.models.InputFileObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +23,7 @@ public class AmExCardHandlerTests {
 
 	@Test
 	public void validateCardNegativeTestCase() {
-		Assert.assertNull(amExCardHandler.validateCard("901000000000000"));
+		Assert.assertNotEquals(amExCardHandler.validateCard("901000000000000"),CreditCardType.AmericanExpress);
 	}
 
 	@Test

@@ -1,5 +1,6 @@
 package com.cmpe202project.implementations.chainofresponsibility;
 
+import com.cmpe202project.implementations.chainofresponsibility.DiscoverCardHandler;
 import com.cmpe202project.models.CreditCardType;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class DiscoverCardHandlerTests {
 
 	@Test
 	public void validateCardNegativeTestCase() {
-		Assert.assertNull(discoverCardHandler.validateCard("901000000000000"));
+		Assert.assertNotEquals(discoverCardHandler.validateCard("901000000000000"),CreditCardType.Discover);
 	}
 
 	@Test

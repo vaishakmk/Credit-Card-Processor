@@ -1,0 +1,6 @@
+cardNumber,cardType
+5400000000000000,MasterCard
+4120000000000,Visa
+6011000000000000,Discover
+341000000000000,AmericanExpress
+00000,Invalid: not a possible card number

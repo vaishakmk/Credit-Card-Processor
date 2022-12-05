@@ -1,5 +1,6 @@
 package com.cmpe202project.implementations.chainofresponsibility;
 
+import com.cmpe202project.implementations.chainofresponsibility.MasterCardHandler;
 import com.cmpe202project.models.CreditCardType;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,7 +21,7 @@ public class MasterCardHandlerTests {
 
 	@Test
 	public void validateCardNegativeTestCase() {
-		Assert.assertNull(masterCardHandler.validateCard("5410000000000"));
+		Assert.assertNotEquals(masterCardHandler.validateCard("5410000000000"),CreditCardType.MasterCard);
 	}
 
 	@Test

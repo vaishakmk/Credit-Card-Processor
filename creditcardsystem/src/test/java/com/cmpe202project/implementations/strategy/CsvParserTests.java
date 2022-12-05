@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.cmpe202project.implementations.strategy.CsvParser;
+import com.cmpe202project.implementations.strategy.FileContext;
 import com.cmpe202project.implementations.util.Utilities;
 import com.cmpe202project.models.*;
 
@@ -21,7 +23,7 @@ public class CsvParserTests {
 
 	@Test
 	public void doReadFileCSVTestCase() throws Exception {
-		Path path = Paths.get("src/test/resources/SampleInput.csv");
+		Path path = Paths.get("src/test/resources/input_file.csv");
 		System.out.println("AbsolutePath of File "+ path.toAbsolutePath().toString());
 		List<InputFileObject>
 				csvFileObjects = fileContext.doReadFile(path.toAbsolutePath().toString());
@@ -50,25 +52,25 @@ public class CsvParserTests {
 	private List<InputFileObject> getActualList() throws Exception {
 		List<InputFileObject> actualList = new ArrayList<>();
 
-		InputFileObject inputFileObject = new InputFileObject("5410000000000000",
-				Utilities.StringToDate("3/20/2030"),
-				"Alice");
+		InputFileObject inputFileObject = new InputFileObject("6011111100007756",
+				Utilities.StringToDate("02/24"),
+				"John Doe");
 		actualList.add(inputFileObject);
 
-		inputFileObject = new InputFileObject("4120000000000",
-				Utilities.StringToDate("4/20/2030"),
-				"Bob");
-		actualList.add(inputFileObject);
-
-		inputFileObject = new InputFileObject("341000000000000",
-				Utilities.StringToDate("5/20/2030"),
-				"Eve");
-		actualList.add(inputFileObject);
-
-		inputFileObject = new InputFileObject("6010000000000000",
-				Utilities.StringToDate("6/20/2030"),
-				"Richard");
-		actualList.add(inputFileObject);
+//		inputFileObject = new InputFileObject("4120000000000",
+//				Utilities.StringToDate("4/20/2030"),
+//				"Bob");
+//		actualList.add(inputFileObject);
+//
+//		inputFileObject = new InputFileObject("341000000000000",
+//				Utilities.StringToDate("5/20/2030"),
+//				"Eve");
+//		actualList.add(inputFileObject);
+//
+//		inputFileObject = new InputFileObject("6010000000000000",
+//				Utilities.StringToDate("6/20/2030"),
+//				"Richard");
+//		actualList.add(inputFileObject);
 
 		return actualList;
 	}
